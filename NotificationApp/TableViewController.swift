@@ -10,6 +10,9 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    let model = TaskModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,26 +25,71 @@ class TableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navController = segue.destination as? UINavigationController, let editTaskController = navController.children.first as? EditTaskViewController, let index = sender as? Int{
+            editTaskController.task = model.tasks[index]
+            editTaskController.TaskName.title =  model.tasks[index].title
+            
+        }
     }
+    
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        print("add new task!")
+        self.performSegue(withIdentifier: "EditTask", sender: self)
+    }
+    
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return model.tasks.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
 
         // Configure the cell...
+        let task = model.tasks[indexPath.row]
+        
+        cell.textLabel?.text = task.title
+        cell.detailTextLabel?.text = String(task.time)
 
         return cell
     }
-    */
-
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//    }
+    
+    
+    // edit and delete actions
+//    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let editTask = UISwipeActionsConfiguration(actions: edit)
+//    }
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        //edit perform segue
+        let editTask = UITableViewRowAction(style: .normal, title: "Edit"){
+            (action, indexPath) in
+            self.performSegue(withIdentifier: "EditTask", sender: indexPath.row)
+        }
+        
+        //delete
+        let deleteTask = UITableViewRowAction(style: .destructive, title: "Delete"){
+            (action, indexPath) in
+            self.model.removeTask(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+            
+        }
+        return [editTask,deleteTask]
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
