@@ -8,13 +8,23 @@
 
 import Foundation
 
+struct Task {
+    var title: String
+    var date: Date
+    var formattedTime: String {
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "h:mm a"
+           return dateFormatter.string(from: self.date)
+       }
+}
+
 class TaskModel{
     private(set) var tasks: [Task]
     
     init() {
         self.tasks = [
-            Task(title: "First Task", time: 3),
-            Task(title: "Second Task", time: 5)
+            Task(title: "First Task", date: Date()),
+            Task(title: "Second Task", date: Date())
         ]
     }
     
@@ -24,8 +34,3 @@ class TaskModel{
     
 }
 
-struct Task {
-    let title: String
-    let time: Int
-    
-}

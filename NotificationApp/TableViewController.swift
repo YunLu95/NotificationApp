@@ -23,13 +23,19 @@ class TableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func didReceiveMemoryWarning() {
+           super.didReceiveMemoryWarning()
+    }
+       
     // MARK: - Table view data source
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController, let editTaskController = navController.children.first as? EditTaskViewController, let index = sender as? Int{
             editTaskController.task = model.tasks[index]
             editTaskController.TaskName.title =  model.tasks[index].title
-            
+//            editTaskController.task.date = model.tasks[index].date
+//            editTaskController.TaskTitleField.text = model.tasks[index].title
+//            editTaskController.TaskDatePicker.date = model.tasks[index].date
         }
     }
     
@@ -37,15 +43,25 @@ class TableViewController: UITableViewController {
         print("add new task!")
         self.performSegue(withIdentifier: "EditTask", sender: self)
     }
-    
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // Return the number of sections.
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
+        if model.tasks.count == 0 {
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        }
+        else {
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        }
         return model.tasks.count
+        
     }
 
     
@@ -54,10 +70,17 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
         let task = model.tasks[indexPath.row]
-        
-        cell.textLabel?.text = task.title
-        cell.detailTextLabel?.text = String(task.time)
+        cell.selectionStyle = .none
+        cell.tag = indexPath.row
+        let titleAttr: [NSAttributedString.Key : Any] = [NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue) : UIFont.systemFont(ofSize: 25.0)]
+        let titleStr = NSMutableAttributedString(string: task.title, attributes: titleAttr)
+        let timeAttr: [NSAttributedString.Key : Any] = [NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue) : UIFont.systemFont(ofSize: 45.0)]
+        let timeStr = NSMutableAttributedString(string: task.formattedTime, attributes: timeAttr)
+        titleStr.addAttributes(titleAttr, range: NSMakeRange(0, titleStr.length))
+        timeStr.addAttributes(timeAttr, range: NSMakeRange(0, timeStr.length-2))
 
+        cell.textLabel?.attributedText = titleStr
+        cell.detailTextLabel?.attributedText = timeStr
         return cell
     }
     
