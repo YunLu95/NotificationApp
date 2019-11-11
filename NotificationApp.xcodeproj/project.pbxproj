@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D273383C235D21D8007877F4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273383B235D21D8007877F4 /* TableViewController.swift */; };
-		D273383E235E9D4E007877F4 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273383D235E9D4E007877F4 /* TaskModel.swift */; };
-		D2733840235F9A28007877F4 /* EditTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273383F235F9A28007877F4 /* EditTaskTableViewController.swift */; };
+		D273383C235D21D8007877F4 /* ReminderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273383B235D21D8007877F4 /* ReminderListViewController.swift */; };
+		D2733840235F9A28007877F4 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273383F235F9A28007877F4 /* FormViewController.swift */; };
 		D2D602DA23566DDA0021488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D602D923566DDA0021488F /* AppDelegate.swift */; };
 		D2D602DC23566DDA0021488F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D602DB23566DDA0021488F /* SceneDelegate.swift */; };
 		D2D602E123566DDA0021488F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D602DF23566DDA0021488F /* Main.storyboard */; };
@@ -19,9 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D273383B235D21D8007877F4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		D273383D235E9D4E007877F4 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
-		D273383F235F9A28007877F4 /* EditTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskTableViewController.swift; sourceTree = "<group>"; };
+		D273383B235D21D8007877F4 /* ReminderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListViewController.swift; sourceTree = "<group>"; };
+		D273383F235F9A28007877F4 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		D2D602D623566DDA0021488F /* NotificationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotificationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D602D923566DDA0021488F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2D602DB23566DDA0021488F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,10 +44,8 @@
 		D2733838235D2056007877F4 /* SupportFile */ = {
 			isa = PBXGroup;
 			children = (
-				D2D602D923566DDA0021488F /* AppDelegate.swift */,
 				D2D602DB23566DDA0021488F /* SceneDelegate.swift */,
 				D2D602E523566DE00021488F /* Assets.xcassets */,
-				D2D602E223566DDA0021488F /* NotificationApp.xcdatamodeld */,
 			);
 			path = SupportFile;
 			sourceTree = "<group>";
@@ -73,10 +69,11 @@
 		D2D602D823566DDA0021488F /* NotificationApp */ = {
 			isa = PBXGroup;
 			children = (
-				D273383B235D21D8007877F4 /* TableViewController.swift */,
-				D273383D235E9D4E007877F4 /* TaskModel.swift */,
+				D2D602D923566DDA0021488F /* AppDelegate.swift */,
+				D273383B235D21D8007877F4 /* ReminderListViewController.swift */,
 				D2D602DF23566DDA0021488F /* Main.storyboard */,
-				D273383F235F9A28007877F4 /* EditTaskTableViewController.swift */,
+				D273383F235F9A28007877F4 /* FormViewController.swift */,
+				D2D602E223566DDA0021488F /* NotificationApp.xcdatamodeld */,
 				D2D602E723566DE00021488F /* LaunchScreen.storyboard */,
 				D2D602EA23566DE00021488F /* Info.plist */,
 				D2733838235D2056007877F4 /* SupportFile */,
@@ -157,10 +154,9 @@
 			files = (
 				D2D602E423566DDA0021488F /* NotificationApp.xcdatamodeld in Sources */,
 				D2D602DA23566DDA0021488F /* AppDelegate.swift in Sources */,
-				D2733840235F9A28007877F4 /* EditTaskTableViewController.swift in Sources */,
-				D273383E235E9D4E007877F4 /* TaskModel.swift in Sources */,
+				D2733840235F9A28007877F4 /* FormViewController.swift in Sources */,
 				D2D602DC23566DDA0021488F /* SceneDelegate.swift in Sources */,
-				D273383C235D21D8007877F4 /* TableViewController.swift in Sources */,
+				D273383C235D21D8007877F4 /* ReminderListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
